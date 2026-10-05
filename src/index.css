@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 249 115 22; /* orange-500 */
+  }
+  
+  body {
+    background-color: #FFFFFF; /* Main background */
+    color: #202020; /* Primary Text */
+    font-family: 'Inter', 'Poppins', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #e2e8f0;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #f97316;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background: #FFFFFF;
+    border: 1px solid #EDEDED;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .glass-card-hover {
+    transition: all 0.2s ease-in-out;
+  }
+  .glass-card-hover:hover {
+    border-color: #F97316;
+    box-shadow: 0 8px 25px -5px rgba(249, 115, 22, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .glow-emerald {
+    box-shadow: 0 0 25px -5px rgba(249, 115, 22, 0.3);
+  }
+  
+  .text-glow-emerald {
+    text-shadow: 0 0 15px rgba(249, 115, 22, 0.5);
+  }
+  
+  .circuit-pattern {
+    background-image: radial-gradient(rgba(249, 115, 22, 0.12) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+}

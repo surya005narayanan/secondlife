@@ -1,0 +1,74 @@
+# ♻️ SECOND LIFE - PROJECT DOCUMENTATION
+
+## 📌 TAGLINE
+"Don't throw it away. Build something with it."
+
+## 📖 PROJECT VISION & OVERVIEW
+SecondLife is an intelligent, AI-powered e-waste repurposing platform. It addresses the massive global electronic waste crisis by flipping the script for engineers, makers, and students. Instead of asking "What components do I need to buy?", SecondLife asks "What amazing project can I build right now with the scrap components I already own?"
+
+It turns random parts from junk drawers (old Arduinos, sensors, LEDs, buzzers) into functional DIY robotics, IoT devices, and smart home appliances, all while tracking real-world ecological impact (in grams of toxic e-waste diverted from landfills).
+
+## 🎨 DESIGN SYSTEM & AESTHETICS
+The application features a premium, minimalist, and bright visual identity tailored to resemble a modern design studio and a friendly sustainability startup.
+- **Primary Background**: Clean White (`#FFFFFF`) and Very Light Warm Gray (`#FFFDF9`)
+- **Primary Accents**: Bright Orange (`#F97316`) and Light Peach/Orange (`#FFF1E6`)
+- **Typography**: Dark Charcoal (`#202020`) and Muted Gray (`#6B6B6B`)
+- **Key UI Elements**: White glass cards with thin `#EDEDED` borders, soft orange hover states, and playful interactions. No dark/cyberpunk themes.
+
+## 🛠️ TECH STACK
+- **Frontend Framework**: React 18 (Hooks, Context API)
+- **Build Tool / Bundler**: Vite (lightning-fast development and optimized builds)
+- **Styling**: Tailwind CSS (Utility-first CSS framework for custom, responsive design)
+- **Icons**: Lucide React (Clean, modern SVG icons)
+- **Data Visualization**: Recharts (Used for rendering ecological impact charts)
+- **Micro-interactions**: Canvas Confetti (Celebratory effects for builds)
+- **State Management**: React Context (`AppContext.jsx`) with LocalStorage persistence (`storage.js`).
+
+## 🧠 CORE FEATURES & ARCHITECTURE
+
+### 1. The Inventory Vault (`components` data)
+Users log all the random electronic parts they own. The system uses an alias normalization engine (`normalization.js`) to intelligently map user input (e.g., "HC-SR04") to standard components (e.g., "Ultrasonic Sensor").
+
+### 2. AI Project Matcher (`matching.js`)
+The core intelligence of the platform. It calculates what a user can build based on their inventory using a strict weighted formula:
+- **72% Weight**: Required Components (Essential parts needed to build).
+- **18% Weight**: Optional Components (Nice-to-have parts for extra features).
+- **10% Weight**: Quantity Fulfillment (Having enough of the required items).
+Projects are dynamically ranked into tiers:
+- 🟢 90% - 100%: Ready to Build
+- 🟠 70% - 89%: Almost Ready (Missing 1-2 parts)
+- 🔵 40% - 69%: Needs More Components
+- ⚪ < 40%: Low Compatibility
+*Tie-breaker logic prioritizes projects that divert the heaviest amount of e-waste.*
+
+### 3. Sustainability Dashboard & Metrics
+Calculates dynamic impact stats:
+- **Total Parts**: Number of logged components.
+- **Ready Projects**: Builds available instantly.
+- **E-Waste Diverted (kg)**: Real-time math tracking hazardous waste kept out of landfills based on completed/reserved blueprints.
+- **Value Recovered**: Estimated financial savings by repurposing vs. buying new.
+
+### 4. Interactive Demo Guide
+A built-in 8-step walkthrough banner designed for live presentations, allowing the user to seamlessly demonstrate the platform's core matching logic, component addition, and instant score updates (e.g., a project jumping from 94% to 100% when adding a missing part).
+
+### 5. AI Optical Scanner (Demo)
+A conceptual interface simulating an AI vision system that scans a photo of a user's workbench to automatically identify and log e-waste components into the vault.
+
+### 6. Global Makers Circle (Community Page)
+A social feed where users can publish their repurposed builds, detail their salvaging techniques, and inspire a global community. Features upvoting ("Likes"), avatar integration, and component tagging.
+
+## 📁 KEY DIRECTORIES & FILES
+- `src/App.jsx`: Main application shell and routing.
+- `src/context/AppContext.jsx`: Central state store, handles metrics calculations and localStorage sync.
+- `src/utils/matching.js`: The heart of the recommendation engine.
+- `src/utils/normalization.js`: Dictionary for component aliases.
+- `src/utils/storage.js`: Wrappers for safe localStorage reads/writes.
+- `src/data/`: Contains `initialComponents.js` (default vault items), `initialProjects.js` (database of blueprints), and `communityProjects.js` (mock community feed).
+- `src/pages/`: Contains all primary views (`LandingPage`, `DashboardPage`, `MatchPage`, `ProjectsPage`, `ScannerPage`, `ImpactPage`, `CommunityPage`).
+- `src/components/`: Reusable UI elements (`ComponentCard`, `ProjectCard`, `DemoGuideBanner`, `Navbar`, `Sidebar`).
+
+## 🚀 FUTURE ROADMAP
+- Real computer vision integration for the optical scanner.
+- Peer-to-peer hardware marketplace/swapping.
+- Integration with local e-waste recycling centers and Repair Cafés.
+- School STEM program onboarding.
